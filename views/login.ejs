@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inicio de sesión</title>
+        <link rel="stylesheet" href="/css/style_login.css">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    </head>
+    <body>
+
+        <%- include ("./partials/header") %>
+
+        <main>
+            <h1>INGRESAR</h1>
+                 <section class= "form">
+                
+                        <form action="/user/login" method="POST" class="login-form" id="reservation">
+                            <h2>INGRESÁ CON TU CUENTA</h2>
+                                
+                                <input class="main-input" id="usuario"  name="email" placeholder="Ingresá tu e-mail" value="<%= locals.oldData ? oldData.email : null %>">
+                                <p id="error-email"></p>
+                            
+                                <% if (locals.errors && errors.email) { %>
+                                   
+                                    <div class="red-text">
+                                    <%= errors.email.msg %>
+                                    </div>
+                
+                                <% } %>
+                                <input class="main-input" id="password"    type="password"    placeholder="Ingresá tu contraseña" name="password">
+                                <p id="error-pass"></p>
+                                <% if (locals.errors && errors.password) { %>
+                                    <div class="red-text"> 
+                                    <%= errors.password.msg %>
+                                    </div>
+                                    <% } %>
+                                <a href="">¿Olvidaste tu contraseña?</a>
+                                <label for="remember_me">
+                                <input type="checkbox"  name="remember_me"   value="remember_me">Recordarme
+                                </label>
+                                <button class="main-button" type="submit"   title="Ingresar"  name="Ingresar" style=cursor:pointer>INGRESÁ</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class=form-right>
+                        <h2>SI NO TENES UNA CUENTA, TE INVITAMOS A QUE CREES UNA</h2>
+                        <a href="/user/register" class="registro">CREA TU CUENTA</a>
+                    </div>
+                </section>
+        </main>
+
+        <%- include ("./partials/footer") %>
+        <script src="/js/loginV.js"></script>
+        <script src="/js/menuBtn.js"></script>
+    </body>
+</html>
+
+        
+        
+        
+
+    

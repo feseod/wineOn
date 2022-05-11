@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WineOn</title>
+        <link rel="stylesheet" href="css/style_index.css">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    </head>
+<body>
+    <%- include ("./partials/header") %>
+    
+    <main>
+        
+        <div class="banner">
+            <img src="/images/banner-vinos.jpg" alt="banner-vinos">
+        </div>
+
+        <ul class="info">
+            <li><i class="fas fa-shuttle-van"></i> Envios a todo el pais</li>
+            <li><i class="fas fa-credit-card"></i> Ver medios de pago</li>
+            <li><i class="fas fa-comment-alt"></i></i> Consultá por whatsapp</li>
+        </ul>
+        
+        <h4 >Resultados de la búsqueda: <%= search %></h4> 
+            
+        <section class="section-index">    
+            
+			<% for (let i=0; i < vinos.length; i++) { %>
+                <a href="/productos/detail/<%= vinos[i].id %>"></a>
+                    <article class="article-index">
+                        <img src="/images/products/<%= vinos[i].imagen%>" alt="<%= vinos.nombre %>" >
+                        <p><%= vinos[i].nombre %></p>
+                        <p>$<%= vinos[i].precio %></p>
+                        <p>Hasta en <%= vinos[i].cuotas %> cuotas sin interés</p>
+                        <div class="button-position">
+                            <a href="/productos/detail/<%= vinos[i].id %>">
+                                <button class="main-button" type="submit" value="ENVIAR">COMPRAR</button>
+                            </a>
+                        </div>
+                    </article>
+                </a>
+            <% } %>
+        </section>
+
+        
+       
+
+    </main>
+
+    <%- include ("./partials/footer") %>
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Usuarios</title>
+        <link rel="stylesheet" href="/css/style_profile.css">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    </head>
+<body>
+
+    <main>
+
+        <section class="section-listado">    
+            <!-- Show all products -->
+
+            <h3>Listado de usuarios: </h3>
+
+            <table class="listado">
+
+                <tr>
+                  <td><h4>Nombre </h4></td>
+                  <td><h4>Apellido </h4></td>
+                  <td><h4>Email </h4></td>
+                  <td><h4>Admin </h4></td>
+                  <td><h4>Editar </h4></td>
+                </tr>
+
+                <% usuarios.forEach(function(usuario){ %>
+                    <tr>
+                        <td><%= usuario.first_name %></td>
+                        <td><%= usuario.last_name %></td>         
+                        <td><%= usuario.email %></td>
+                        <td><%= usuario.admin == 1 ?  "Administrador" : "Invitado" %></td>
+                        <td>
+                            <form action="/user/<%= usuario.id%>/profile/edit"  method="GET">
+                                <button class="editar" type="submit" value="editar_item" style=cursor:pointer>Editar</button>
+                            </form>
+                        </td>
+                      </tr>
+                <% }) %>
+              
+              </table>
+        </section>
+        <div id="acciones">
+            <form action="/user/register"  method="GET">
+                <button class="add_user" type="submit" value="editar_item" style=cursor:pointer>Agregar usuario</button>
+            </form>
+            <a href="/">
+                <button class="boton_listado">HOME</button>
+            </a>
+        </div>
+
+    </main>
+
+    <%- include ("./partials/footer") %>
+
+</body>
+</html>

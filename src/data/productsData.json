@@ -1,0 +1,44 @@
+[
+ {
+  "id": 1,
+  "name": "DAMIAN",
+  "price": "432423",
+  "discount": "23423",
+  "category": "visited",
+  "bodega": "",
+  "cuotas": "23423",
+  "description": "",
+  "image": "undefined-1641769025319.jpeg"
+ },
+ {
+  "id": "4",
+  "name": "JUANI",
+  "price": "2",
+  "discount": "3",
+  "category": "in-sale",
+  "bodega": "",
+  "cuotas": "2",
+  "description": "cefdcdc",
+  "image": "undefined-1641776119015.jpeg"
+ },
+ {
+  "id": 6,
+  "name": "SOL",
+  "price": "2",
+  "discount": "2",
+  "category": "visited",
+  "cuotas": "3",
+  "description": "ASDASDA",
+  "image": "undefined-1641774423783.jpeg"
+ },
+ {
+  "id": 7,
+  "name": "FERNANDO",
+  "price": "2",
+  "discount": "2",
+  "category": "in-sale",
+  "cuotas": "2",
+  "description": "XSDSFSDF",
+  "image": "undefined-1641776645966.jpeg"
+ }
+]

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WineOn</title>
+        <link rel="stylesheet" href="css/style_index.css">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    </head>
+<body>
+    <%- include ("./partials/header") %>
+        <!-- <div class="emergente">
+            <p>Debes ser mayor de edad para poder visitar este sitio web</p>
+            <div class="boton menor">Tengo menos de 18 años</div>
+            <div class="boton mayor">Soy mayor de edad</div>
+        </div> -->
+    <main>
+ 
+        
+        
+        <div class="banner">
+            <img src="/images/banner-vinos.jpg" alt="banner-vinos">
+        </div>
+        <% if (locals.estaLogueado && locals.usuarioLogueado.admin == 1) { %>
+        <div class="adminForm">
+            <h2>Opciones de Administrador</h2>
+            <div class="administration">
+                <div class="administration1">
+                    <p>Productos:</p>
+                    <form action="/productos/agregar"  method="GET">
+                        <button class="boton_crear botonArriba" type="submit" value="editar_item" style=cursor:pointer>Crear Producto</button>
+                    </form>
+                    <form action="/productos"  method="GET">
+                    <button class="boton_crear" type="submit" value="editar_item" style=cursor:pointer>Listado de productos</button>
+                    </form>
+                </div>
+                <div class="administration2">
+                    <p>Usuarios:</p>
+                    <form action="/user/register"  method="GET">
+                        <button class="boton_crear botonArriba" type="submit" value="editar_item" style=cursor:pointer>Crear Usuario</button>
+                    </form>
+                    <form action="/user/list"  method="GET">
+                            <button class="boton_crear" type="submit" value="editar_item" style=cursor:pointer>Listado de usuarios</button>
+                    </form>
+                </div>    
+            </div>  
+        </div>
+        
+        <% } %>
+        <ul class="info">
+            <li><i class="fas fa-shuttle-van"></i> Envios a todo el pais</li>
+            <li><i class="fas fa-credit-card"></i> Ver medios de pago</li>
+            <li><i class="fas fa-comment-alt"></i></i> Consultá por whatsapp</li>
+        </ul>
+        <br>
+    <br>
+    
+        <h2>Ultimos Agregados</h2>
+        <section class="section-index">  
+              
+            <!-- Ultimos productos agregados -->
+			<% for (let i=0; i < ultimosAgregados.length; i++) { %>
+                <a href="/productos/detail/<%= ultimosAgregados[i].id %>"></a>
+                    <article class="article-index">
+                        <img src="/images/products/<%= ultimosAgregados[i].imagen%>" alt="<%= ultimosAgregados[i].nombre %>" >
+                        <p><%= ultimosAgregados[i].nombre %></p>
+                        <p>$<%= ultimosAgregados[i].precio %></p>
+                        <p>Hasta en <%= ultimosAgregados[i].cuotas %> cuotas sin interés</p>
+                        <div class="button-position">
+                            <a href="/productos/detail/<%= ultimosAgregados[i].id %>">
+                                <button class="main-button" type="submit" value="ENVIAR">COMPRAR</button>
+                            </a>
+                        </div>
+                    </article>
+                </a>
+            <% } %>
+        </section>
+    <br>
+    <br>
+    <br>
+        <h2>Con descuento</h2>
+
+        <section class="section-index">    
+            <!-- Productos con descuento-->
+			<% for (let i=0; i < conDescuento.length; i++) { %>
+                <a href="/productos/detail/<%= conDescuento[i].id %>"></a>
+                    <article class="article-index">
+                        <img src="/images/products/<%= conDescuento[i].imagen%>" alt="<%= conDescuento[i].nombre %>" >
+                        <p><%= conDescuento[i].nombre %></p>
+                        <p>$<%= conDescuento[i].precio %></p>
+                        <p id="descuento"> <%= conDescuento[i].descuento %> % OFF</p>
+                        <div class="button-position">
+                            <a href="/productos/detail/<%= conDescuento[i].id %>">
+                                <button class="main-button" type="submit" value="ENVIAR">COMPRAR</button>
+                            </a>
+                        </div>
+                    </article>
+                </a>
+            <% } %>
+        </section>
+        <a class="fab fa-whatsapp" href="https://wa.me/3794900583/?text=Gracias por contactarte con nosotros" target="_blank"></a>
+       
+
+    </main>
+
+    <%- include ("./partials/footer") %>
+    <script src="/js/menuBtn.js"></script>
+    <script src="/js/underAge.js"></script>
+    
+
+</body>
+</html>

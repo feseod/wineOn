@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WineOn</title>
+        <link rel="stylesheet" href="css/style_contacto.css">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    </head>
+<body>
+    <%- include ("./partials/header") %>
+
+    <main>
+
+        <div>
+            <h1>Contactanos!!!</h1>
+        </div>
+
+        <form action="POST" class="form">
+            <div class="subForm">
+                <label for="telefono" class="form-label">Telefono</label>
+			    <input type="text" id="telefono" name="telefono" placeholder="Ej: 1135275621" class="form-input">
+            </div>
+
+            
+            <div class="subForm" id="asnt">
+                <label for="asunto" class="form-label">Asunto</label>
+                <textarea name="asunto" id="asunto" placeholder="Escibe tu asunto"></textarea>
+            </div>
+
+            
+            <div class="subForm" id="mnsj">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea name="mensaje" id="mensaje" placeholder="¡Cuentanos tu problema!"></textarea>
+            </div>
+
+            <a href="/index" class="enviar"><button>Enviar</button></a>
+        </form>
+
+        <figure>
+            <img src="/images/imagenContacto.png" alt="banner-contacto">
+        </figure>
+        <a class="fab fa-whatsapp" href="https://wa.me/3794888888/?text=tu%20texto%20personalizado" target="_blank"></a>
+
+    </main>
+
+    <%- include ("./partials/footer") %>
+    <script src="/js/menuBtn.js"></script>
+</body>
+</html>

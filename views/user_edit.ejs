@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= usuario.first_name %></title>
+        <link rel="stylesheet" href="/css/style_profile.css">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+<body>
+
+
+    <main>
+        <section class="perfil">
+            <div class="div-title">
+                <h1>Editar datos de tu cuenta: </h1>
+            </div>  
+        </section>
+
+        <form action="/user/<%= usuario.id %>/profile/edit?_method=PUT" method="POST" >
+            <div class="img_section">
+                <img src="/images/users/<%= usuario.imagen ? usuario.imagen :'default.png'%>" alt="" width="150" height="150" style="border-radius: 1900px;"  ><br>
+                
+                <div >
+                    <a href="/user/<%= usuario.id%>/profile/edit/imagen" class="boton_listado">Editar imagen</a>
+                </div>
+                
+            </div>
+
+            <div class="div_edit">
+                <label for="first_name" class="form-label">Nombre</label>
+                <input type="text" class = "input_edit" id="first_name" name="first_name" value="<%= usuario.first_name %>"  class="form-input">
+                <% if (locals.errors && errors.first_name) { %>
+                    <div class="red-text">
+                    <%= errors.first_name.msg %>
+                    </div>
+
+                <% } %>
+            </div>  
+            <div class="div_edit">
+                <label for="last_name" class="form-label">Apellido</label>
+                <input type="text" class = "input_edit" id="last_name" name="last_name" value="<%= usuario.last_name %>"  class="form-input">
+                <% if (locals.errors && errors.last_name) { %>
+                    <div class="red-text"> 
+                    <%= errors.last_name.msg %>
+                    </div>
+
+                <% } %>
+            </div>  
+            <div class="div_edit">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class = "input_edit" id="email" name="email" value="<%= usuario.mail %>"  class="form-input">
+                <% if (locals.errors && errors.email) { %>
+                    <div class="red-text">
+                    <%= errors.email.msg %>
+                    </div>
+
+                <% } %>
+            </div>  
+            <div class="div_edit">
+                <label for="nacimiento" class="form-label">Fecha de nacimiento</label>
+                <input type="date" class = "input_edit" id="nacimiento" name="nacimiento" value="<%= usuario.nacimiento %>"  class="form-input">
+                <% if (locals.errors && errors.nacimiento) { %>
+                    <div class="red-text">
+                    <%= errors.nacimiento.msg %>
+                    </div>
+
+                <% } %>
+            </div>  
+            
+            <div class="div_edit">
+                <label for="domicilio" class="form-label">Domicilio</label>
+                <input type="text" class = "input_edit" id="domicilio" name="domicilio" value="<%= usuario.domicilio %>"  class="form-input">
+                <% if (locals.errors && errors.domicilio) { %>
+                    <div class="red-text">
+                    <%= errors.domicilio.msg %>
+                    </div>
+
+                <% } %>
+            </div> 
+            <div class="div_edit">
+                <label for="dni" class="form-label">DNI</label>
+                <input type="text" class = "input_edit" id="dni" name="dni" value="<%= usuario.dni %>"  class="form-input">
+                <% if (locals.errors && errors.dni) { %>
+                    <div class="red-text">
+                    <%= errors.dni.msg %>
+                    </div>
+
+                <% } %>
+            </div>  
+           
+            
+            <div>
+                <button type="submit" class="boton_listado">Guardar cambios</button>
+            </div>
+        </form>
+        <div class="goBack">
+            <a href="/">
+                <button class="boton_listado">VOLVER</button>
+            </a>
+        </div>
+        
+    </main>
+
+    <!-- <%- include ("./partials/footer") %> -->
+
+</body>
+</html>

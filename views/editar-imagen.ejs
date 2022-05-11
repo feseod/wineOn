@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= usuario.first_name %></title>
+        <link rel="stylesheet" href="/css/style_profile.css">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+<body>
+
+
+    <main>
+        
+
+        <form action="/user/<%= usuario.id%>/profile/edit/imagen?_method=PUT" method="POST" enctype="multipart/form-data">
+            <div class="img_section">
+                <img src="/images/users/<%= usuario.imagen ? usuario.imagen :'default.png'%>" alt="" width="150" height="150" style="border-radius: 1900px;"  ><br>
+                
+                <label for="imagen" class="form-label"> </label><br>
+                <input type="file" name="imagen" id="imagen" class="form-input" >
+                <% if (locals.errors && errors.imagen) { %>
+                    <div class="red-text">
+                    <%= errors.imagen.msg %>
+                    </div>
+
+                <% } %>
+                
+            </div>
+
+           
+            
+            <div >
+                <button type="submit" class="boton_listado">Guardar cambios</button>
+            </div>
+
+            <div >
+                <a href="/user/<%= usuario.id%> /profile" class="boton_listado">Volver</a>
+            </div>
+        </form>
+        <div class="goBack">
+            <a href="/">
+                <button class="buy-now-button boton_listado">HOME</button>
+            </a>
+        </div>
+    </main>
+
+    <!-- <%- include ("./partials/footer") %> -->
+
+</body>
+</html>

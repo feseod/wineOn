@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WineOn - Creá tu cuenta</title>
+    <link rel="stylesheet" href="/css/style_register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+<body>
+
+    <main>
+        <div id="registro">
+        <form action="/user/register" method="POST" enctype="multipart/form-data" class="reservation">
+            <div>
+                <h2 id="h2">Creá tu cuenta</h2>
+            </div>
+            <br/>
+            <div class="form1-div">
+                <p>Nombre</p>
+                <input type="text" id="name" placeholder="Ej.: Martín" name="first_name" value= "<%= locals.oldData ? oldData.first_name : null %>" class="main-input <%= locals.errors && errors.first_name ? 'is-invalid' : null %>" > <!-- probar la clase "is ivalid" -->
+                <p id="error-name"></p>
+                <% if (locals.errors && errors.first_name) { %>
+                    <div class="red-text">
+                        <%= errors.first_name.msg %>
+                    </div>
+
+                <% } %>
+            </div>
+
+            <div class="form1-div">
+                <p>Apellido</p>
+                <input class="main-input" id="lastName" type="text" placeholder="Ej.: Perez" name="last_name" value= "<%= locals.oldData ? oldData.last_name : null %>">
+                <p id="error-lastname"></p>
+                <% if (locals.errors && errors.last_name) { %>
+                    <div class="red-text"> 
+                    <%= errors.last_name.msg %>
+                    </div>
+
+                <% } %>
+            </div>
+           
+            <div class="form1-div"> 
+                <p>Email</p>
+                <input class="main-input" id="email" type="text" placeholder="Ej.: tunombre@email.com" name="email" value= "<%= locals.oldData ? oldData.email : null %>">
+                <p id="error-email"></p>
+                <% if (locals.errors && errors.email) { %>
+                    <div class="red-text">
+                    <%= errors.email.msg %>
+                    </div>
+
+                <% } %>
+            </div>
+
+            <div class="form1-div"> 
+                <p>Fecha de nacimiento</p>
+                <input class="main-input" type="date" name="nacimiento" id="nacimiento" value= "<%= locals.oldData ? oldData.nacimiento : null %>">
+                <p id="error-date"></p>
+            </div>
+            
+            <div class="form1-div">
+                <p>Domicilio</p>
+                <input class="main-input" id="domicilio" type="text" placeholder="Ej.: Av. Independencia 2324" name="domicilio" value= "<%= locals.oldData ? oldData.domicilio : null %>">
+                <p id="error-dom"></p>
+                <% if (locals.errors && errors.domicilio) { %>
+                    <div class="red-text">
+                    <%= errors.domicilio.msg %>
+                    </div>
+
+                <% } %>
+            </div>
+
+            <div class="form1-div"> 
+                <p>Documento de identidad</p>
+                <input class="main-input" id="dni" type="number" placeholder="Ej.: 22333444" name="dni" value= "<%= locals.oldData ? oldData.dni : null %>">
+                <p id="error-dni"></p>
+                <% if (locals.errors && errors.dni) { %>
+                    <div class="red-text">
+                    <%= errors.dni.msg %>
+                    </div>
+
+                <% } %>
+            </div>
+            
+            <div class="form1-div">
+                <p>Foto de Perfil</p>
+                <input class="main-input" id="img" type="file" id="imagen" name="imagen">
+                <% if (locals.errors && errors.imagen) { %>
+                    <div class="red-text">
+                    <%= errors.imagen.msg %>
+                    </div>
+
+                <% } %>
+            </div>
+
+            <div class="form1-div">
+                <p>Contraseña</p>
+                <input class="main-input" id="password" type="password" placeholder ="********" name="contraseña" > 
+                <p id="error-pass"></p>
+                <% if (locals.errors && errors.contraseña) { %>
+                    <div class="red-text">
+                    <%= errors.contraseña.msg %>
+                    </div>
+
+                <% } %>
+            </div>
+
+            <div class="form1-div">
+                <p>Confirmá tu contraseña</p>
+                <input class="main-input" id="repassword" type="password" placeholder="*********" name="confirma_contraseña" >
+                <p id="error-repass"></p>
+                <% if (locals.errors && errors.confirma_contraseña) { %>
+                    <div class="red-text">
+                    <%= errors.confirma_contraseña.msg %>
+                    </div>
+
+                <% } %>
+            </div>
+            <button class="main-button" type="submit" value="ENVIAR" style=cursor:pointer>Crear cuenta</button>
+        </form>
+        <div class="col-12" id="cancelar">
+            <a href="/"><button  class="buy-now-button">Cancelar</button></a>
+        </div>
+        </div>
+    </main>
+    
+    <%- include ("./partials/footer") %>
+    <script src="/js/registerV.js"></script>
+</body>
+</html>

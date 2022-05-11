@@ -1,0 +1,464 @@
+/* selector de raiz de CSS */
+:root{
+    --first-color: #E91E63;
+    --first-alpha-color: rgba(217, 0, 98, 0.75);
+    --second-color: #14192d;
+    --second-alpha-color: rgba(20, 25, 45, 0.75);
+    --third-color: #501464;
+    --third-alpha-color: rgba(80, 20, 100, 0.75);
+    --white-color: #fff;
+    --gray-light-color: #f3f3f3;
+    --gray-color: #ccc;
+    --gray-dark-color: #666;
+    --black-color: #000;
+    --link-color: #509ee3;
+    --title-color: #333;
+    --text-color: #222;
+    --white-alpha-color: rgba(255, 255, 255, 0.75);
+    --black-alpha-color: rgba(0, 0, 0, 0.75);
+    --font: "Raleway", sans-serif;
+    --max-width: 1024px;
+    --shadow: 17px 17px 13px -9px rgba(0,0,0,0.75)
+}
+
+/* RESET */
+/* modelo de caja */
+html{
+    box-sizing: border-box;
+    font-family: var(--font);
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before{
+    box-sizing: inherit;
+    
+}
+
+body{
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-color);
+    /* max-width: var(--max-width); */
+
+
+
+}
+
+a{
+    color: var(--link-color);
+    transition: all 0.5s ease-out;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover{
+    opacity: 0.75;
+}
+
+
+button{
+    transition: all 0.5s ease-out;
+}
+
+button:hover{
+    opacity: 0.75;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+}
+
+
+/* seccion HEADER */
+
+.burger{
+    text-align: center;
+    width: 20%;
+    margin: 0px;
+    background-color: var(--second-color);
+    border: 0;
+    cursor: pointer;
+}
+
+.container{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--max-width);
+}
+
+.fa-bars {
+    border-radius: 10px;
+}
+
+.fa-bars, .fa-shopping-cart {
+    width: 3.125rem;
+    height: 1rem;
+    text-align: center;
+    padding-top: 1.25rem;
+    font-size: 1.56rem;
+    color:var(--first-color);
+}
+
+.fa-search {
+    color:var(--first-color);
+    font-size: 1.56rem;
+}
+
+header{
+    background-color: var(--second-color);
+    padding-bottom: 0.5rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+header div form input{
+    position: relative;
+}
+
+.header-div-one{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+}
+
+.header-div-two{
+    text-align: center;
+}
+
+.header-input{
+    height: 2.5rem;
+    width: 85%;
+    border-radius: 5px;
+    border:solid  0.5px var(--white-color);
+    margin-left: 1.56rem;
+}
+
+.inputForm{
+    display:flex;  
+}
+
+.lens{
+        text-align: center;
+        background-color: var(--second-color);
+        border: 0;
+        cursor: pointer;
+}
+
+.login-button{
+    display: none;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 10px;
+    color: var(--first-color);
+}
+
+
+.menu {
+    position: fixed;
+    left: 0;
+    bottom: 6.438rem;/* alineacion desde abajo justamente lo que mide el header */
+    width: 100%;/* al darle position, pierde su tamaño por ende hay que redefinirlo */
+    display: flex;
+    flex-direction: column;
+    background-color: var(--second-color);
+    opacity: 0;/* el menu no se ve pero se activa la manito porque está, entonces se usa pointer-events */
+    pointer-events: none; /* para no tener ativos elementos, en este caso, por tener opacity 0 */
+    transition: opacity 0.5s ease;
+    
+}
+
+.menu-active{
+    opacity: 1;/* el menu no se ve pero se activa la manito porque está, entonces se usa pointer-events */
+    pointer-events: auto; /* para no tener ativos elementos, en este caso, por tener opacity 0 */
+   
+}
+
+nav a{
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--first-color);
+    text-decoration: none;
+
+}
+
+nav a:hover{
+    color: var(--white-color);
+    background-color: var(--first-color);
+}
+
+.main-input{
+    height: 40px;
+    width: 85%;
+    border-radius: 5px;
+    border:solid  0.5px var(--white-color);
+    margin-left: 25px;
+}
+
+.posicion-i {
+    margin-right: 1rem;
+} 
+
+#posicion-btn {
+    position:relative;
+    background-color: white;
+    right: 2rem;
+    top: 5px;
+}
+
+.product-cart{
+    width: 20%;
+    margin: 0px;
+    background-color: var(--second-color);
+    border: 0;
+    cursor: pointer;
+}
+
+/* seccion MAIN */
+
+.boton {
+    font-family: Arial,sans-serif; 
+    padding: 5px;
+    width: 20%;
+    height: 2.375rem;
+    font-size: 0.875rem;
+    background-color: var(--third-color);
+    color: var(--white-color);
+    text-decoration: none;
+    border: 2px solid var(--third-color);
+    border-radius: 6px;
+    text-align: center;
+}
+
+.div-tilde{
+    text-align: center;
+}
+
+.div-tilde img{
+    width: 20%;
+}
+
+.div-button{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+/* seccion FOOTER */
+
+footer{
+    background-color:var(--second-color);
+    margin-top: 2.5rem;
+    margin-bottom:100px;
+    padding-bottom: 0.5rem;
+}
+
+footer h3{
+    color: var(--white-color);
+}
+
+.footer-input{
+    height: 40px;
+    width: 30%;
+    border-radius: 5px;
+    border: solid 0.5px var(--gray-color);
+    margin-left: 25px;
+}
+
+
+footer >* ul{
+    list-style: none;
+    margin-top: 1.5rem;
+}
+
+footer ul > li{
+    color: var(--white-color);
+}
+
+footer ul > li:first-child{
+    font-weight: bold;
+}
+
+footer p{
+    font-size: 0.5rem;
+    text-align: center;
+    color: var(--white-color);
+}
+
+.suscription{
+    text-align: center;
+    padding-top: 0.5rem;
+}
+
+/*---------------------------- QUERIES----------------------------*/
+
+
+@media (min-width: 768px) {
+    
+    /* HEADER */
+
+    header{
+        background-color: var(--second-color);
+        padding-bottom: 0.5rem;
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+    }
+
+    .header-input{
+        height: 40px;
+        width: 90%;
+        border-radius: 5px;
+        border:solid  0.5px var(--white-color);
+        margin-left: 25px;
+    }
+
+    .menu{
+        top: 6.438rem;
+        bottom: 0.438rem;
+    }
+    
+    .product-cart{
+        text-align: right;
+        width: 20%;
+        margin: 0px;
+    }
+
+    /* MAIN */
+
+  
+
+     /* FOOTER */
+
+     .lists{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    footer{
+        background-color: var(--second-color);
+        margin-top: 2.5rem;
+        margin-bottom:0px;
+        padding-bottom: 0rem;
+        
+    }
+
+}
+
+
+@media (min-width: 1024px) {
+
+    /*HEADER*/
+
+    .burger{
+        display: none;
+    }
+
+    header{
+       position: sticky;
+       top: 0;
+   }
+
+   .header-div-one{
+       justify-content: space-between;
+   }
+
+   .login-button{
+       height: 40px;
+       border-radius: 5px;
+       background-color:var(--first-color);
+       width: 140px;
+       color: var(--white-color);
+       font-size: 1rem;
+       display: block;
+       margin-right: 6px;
+       cursor: pointer;
+       border: 0;
+   }
+
+    nav a:last-child{
+        display: none;
+    }
+
+    .menu{
+       position:static;
+       width: auto;
+       flex-direction: row;
+       opacity: 1;
+       pointer-events: auto;/* le devuelvo todo lo que le saque en mobile */
+       justify-content: center;
+   }
+
+   .menu a{
+       font-size: 1.5rem;
+   }
+
+
+    .product-cart {
+       text-align: right;
+       width: 20%;
+       margin: 0px;
+       position: relative;
+       right: -256px;
+       bottom: 8px;
+   }
+
+    /* MAIN */
+
+   
+ /* icono whatsapp */
+
+ .fab {
+    padding: 10px;
+    font-size: 30px;
+    /* width: 30px; */
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+       }
+
+    .fab:hover {
+    opacity: 0.7;
+    }
+
+    .fa-whatsapp {
+    background: #13fc59;
+    color: white;
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    } 
+    /* FOOTER */
+    
+    .lists{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+
+/* FOOTER*/
+
+}

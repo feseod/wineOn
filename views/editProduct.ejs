@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar producto</title>
+    <link rel="stylesheet" href="/css/style_editProduct.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+<body>
+
+    <!-- <%- include ("./partials/header") %> -->
+
+    <main>
+        <div class="container products-wrapper">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="products-title">Producto a editar: <%= vino.nombre %></h2>
+                </div>
+            </div>
+            <div class="col-12">
+                <form action="/productos/detail/<%= vino.id %>/editar?_method=PUT" method="POST" >
+                    <div class="row product-detail">
+                        <section>
+                            <article>
+                                <div class="col-12 col-md-6">
+                                    <label for="name" class="form-label">Nombre del producto:</label>
+                                    <input type="text" id="name" name="name" value="<%= vino.nombre %>" placeholder="Ej: Cosecha tardía" class="form-input">
+                                    <p id="error-name"></p>
+                                    <% if (locals.errors && errors.name) { %>
+                                        <div class="red-text">
+                                        <%= errors.name.msg %>
+                                        </div>
+                    
+                                    <% } %>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="price" class="form-label">Precio del producto:</label>
+                                    <input type="number" id="price" name="price" value="<%= vino.precio %>" placeholder="Ej: 5678" class="form-input">
+                                    <% if (locals.errors && errors.price) { %>
+                                        <div class="red-text">
+                                        <%= errors.price.msg %>
+                                        </div>
+                    
+                                    <% } %>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="discount" class="form-label">Cuotas sin interes:</label>
+                                    <input type="number" id="cuotas" name="cuotas" value="<%= vino.cuotas %>" placeholder="Ej: 6" class="form-input">
+                                    <% if (locals.errors && errors.cuotas) { %>
+                                        <div class="red-text">
+                                        <%= errors.cuotas.msg %>
+                                        </div>
+                    
+                                    <% } %>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="discount" class="form-label">Descuento:</label>
+                                    <input type="number" id="discount" name="discount" value="<%= vino.descuento %>" placeholder="Ej: 15" class="form-input">
+                                    <% if (locals.errors && errors.discount) { %>
+                                        <div class="red-text">
+                                        <%= errors.discount.msg %>
+                                        </div>
+                    
+                                    <% } %>
+                                </div>
+                                <div class="col-12" id="Dcol-12">
+                                    <label for="description" class="form-label">Descripción:</label>
+                                    <textarea name="descripcion" id="description" class="form-input"><%=vino.descripcion %></textarea>
+                                    <p id="error-description"></p>
+                                    <% if (locals.errors && errors.descripcion) { %>
+                                        <div class="red-text">
+                                        <%= errors.descripcion.msg %>
+                                        </div>
+                    
+                                    <% } %>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="bodega" class="form-label">Bodega:</label>
+                                    <select name="bodega">
+                                        <% for (let i=0; i < bodegas.length; i++) { %>
+
+                                            <% if (bodegas[i].id == vino.bodegaid) { %>
+                                                <option value="<%= bodegas[i].id %>" selected>
+                                                    <%= bodegas[i].nombre %>
+                                                    </option> 
+                                                <% } else { %>
+                                                    <option value="<%= bodegas[i].id %>">
+                                                    <%= bodegas[i].nombre %>
+                                                    </option> 
+                                                <% } %>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                
+                            </article>
+                            <article>
+                                <div class="col-12 col-md-6">
+                                    <label for="cepa" class="form-label">Cepa:</label>
+                                    <select name="cepa">
+                                        <% for (let i=0; i < cepas.length; i++) { %>
+
+                                            <% if (cepas[i].id == vino.cepaid) { %>
+                                                <option value="<%= cepas[i].id %>" selected>
+                                                    <%= cepas[i].nombre %>
+                                                    </option> 
+                                                <% } else { %>
+                                                    <option value="<%= cepas[i].id %>">
+                                                    <%= cepas[i].nombre %>
+                                                    </option> 
+                                                <% } %>
+                                        <% } %>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="unidades" class="form-label">Stock:</label>
+                                    <input type="number" id="unidades" name="unidades" value="<%= vino.stock %>" placeholder="Ej: x" class="form-input">
+                                    <% if (locals.errors && errors.unidades) { %>
+                                        <div class="red-text">
+                                        <%= errors.unidades.msg %>
+                                        </div>
+                    
+                                    <% } %>
+                                </div>
+                                
+                                
+                                <div class="col-12">
+                                    <label for="imagen" class="form-label">Imagen:</label>
+                                    <img src="/images/products/<%= vino.imagen %>" alt="" width="150" height="150" style="border-radius: 1900px;"  >
+                                    
+                                </div>
+                                <div >
+                                    <a href="/productos/detail/<%= vino.id %>/editar/imagen" class="boton_listado">Editar imagen</a>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="buy-now-button">Guardar cambios</button>
+                                </div>
+                                
+                                
+                            </article>
+                        </section>
+                    </div>
+                </form>
+                <form action="/productos/detail/<%= vino.id %>/editar/eliminar?_method=DELETE" method="POST">
+                    <button class="boton_eliminar" type="submit" value="eliminar_item" style=cursor:pointer>Eliminar Producto</button>
+                </form>
+                <a href="/">
+                    <button class="buy-now-button">HOME</button>
+                </a>
+            </div>
+    
+        </div>
+    </main>
+
+    <!-- <%- include ("./partials/footer") %> -->
+    <script src="/js/validacionEditar.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar productos</title>
+	<link rel="stylesheet" href="/css/style_addProduct.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+
+
+
+<body>
+
+	
+
+    <main>
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Formulario de creación de productos</h2>
+			</div>
+		</div>
+		<div class="col-12">
+			<form action="/productos/agregar" method="POST" enctype="multipart/form-data">
+				<div class="row product-detail">
+					<section>
+						<article>
+							<div class="col-12 col-md-6">
+								<label for="name" class="form-label">Nombre del producto:</label>
+								<input type="text" id="name" name="name" placeholder="Ej: Cosecha tardía" value= "<%= locals.oldData ? oldData.name : null %>"class="form-input">
+								<p id="error-name"></p>
+								<% if (locals.errors && errors.name) { %>
+									<div class="red-text">
+									<%= errors.name.msg %>
+									</div>
+				
+								<% } %>
+							</div>
+							<div class="col-12 col-md-6">
+								<label for="price" class="form-label">Precio del producto:</label>
+								<input type="number" id="price" name="price" placeholder="Ej: 5678" value= "<%= locals.oldData ? oldData.price : null %>" class="form-input">
+								<% if (locals.errors && errors.price) { %>
+									<div class="red-text">
+									<%= errors.price.msg %>
+									</div>
+				
+								<% } %>
+							</div>
+							<div class="col-12 col-md-6">
+								<label for="discount" class="form-label">Descuento:</label>
+								<input type="number" id="discount" name="discount" placeholder="Ej: 15" value= "<%= locals.oldData ? oldData.discount : null %>"class="form-input">
+								<% if (locals.errors && errors.discount) { %>
+									<div class="red-text">
+									<%= errors.discount.msg %>
+									</div>
+				
+								<% } %>
+							</div>
+							<div class="col-12 col-md-6">
+								<label for="discount" class="form-label">Unidades:</label>
+								<input type="number" name="unidades" placeholder="Ej: 15" value= "<%= locals.oldData ? oldData.unidades : null %>" class="form-input">
+								<% if (locals.errors && errors.unidades) { %>
+									<div class="red-text">
+									<%= errors.unidades.msg %>
+									</div>
+				
+								<% } %>
+							</div>
+
+							<div class="col-12 col-md-6">
+								<label for="cepa" class="form-label">Cepas:</label>
+								<select name="cepa" class="form-input">
+									<% for (let i=0; i < cepas.length; i++) { %>
+									<option value= "<%= cepas[i].id %>">
+										<%= cepas[i].nombre %>
+									</option>
+									<%  } %>
+								</select>
+							</div>
+
+							<div class="col-12 col-md-6">
+								<label for="bodega" class="form-label">Bodegas:</label>
+								<select name="bodega" class="form-input">
+									<% for (let i=0; i < bodegas.length; i++) { %>
+									<option value= "<%= bodegas[i].id %>">
+										<%= bodegas[i].nombre %>
+									</option>
+									<%  } %>
+								</select>
+							</div>
+
+							
+							
+						</article>
+						
+						<article>
+							
+							<div class="col-12 col-md-6">
+								<label for="discount" class="form-label">Cuotas sin interes:</label>
+								<input type="number" id="cuotas" name="cuotas" placeholder="Ej: 6" value= "<%= locals.oldData ? oldData.cuotas : null %>" class="form-input">
+								<% if (locals.errors && errors.cuotas) { %>
+									<div class="red-text">
+									<%= errors.cuotas.msg %>
+									</div>
+				
+								<% } %>
+							</div>
+							<div class="col-12" id="Dcol-12">
+								<label for="description" class="form-label">Descipción:</label>
+								<textarea name="descripcion" id="description" value= "<%= locals.oldData ? oldData.description : null %>" class="form-input"></textarea>
+								<p id="error-description"></p>
+								<% if (locals.errors && errors.descripcion) { %>
+									<div class="red-text">
+									<%= errors.descripcion.msg %>
+									</div>
+				
+								<% } %>
+							</div>
+							<div class="col-12">
+								<label for="image" class="form-label">Imagen:</label>
+								<input type="file" name="imagen" id="image" value= "<%= locals.oldData ? oldData.image : null %>" class="form-input">
+								<% if (locals.errors && errors.imagen) { %>
+									<div class="red-text">
+									<%= errors.imagen.msg %>
+									</div>
+				
+								<% } %>
+							</div>
+							
+						</article>
+						
+					</section>
+					<div class="div-botones">
+						<div class="col-12">
+							<button type="submit" class="boton_listado">Guardar producto</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<div class="col-12" id="cancelar">
+				<a href="/"><button  class="boton_editar">Cancelar</button></a>
+			</div>
+		</div>
+
+	</div>
+
+	
+	</main>
+   
+	<!-- <script src="/js/validacionCrear.js"></script> -->
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= user.first_name %></title>
+        <link rel="stylesheet" href="/css/style_profile.css">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+<body>
+
+
+    <main>
+        <section class="perfil">
+            <div class="div-title">
+                <h1>Hola <%= user.first_name %>! </h1>
+            </div>  
+            
+            <div class="pic_self">
+                <img src="/images/users/<%= user.imagen ? user.imagen : 'default.png'%>" alt="" width="150" height="150" style="border-radius: 1900px;"  >
+            </div>
+
+        </section>
+        <section class = "datos-personales">
+            <h3>Datos de tu cuenta: </h3>
+
+            <div class="first_name">
+                <p>Nombre</p>
+                <h3><%= user.first_name ? user.first_name : "nombre" %></p><h3>
+            </div>  
+            <div class="last_name">
+                <p>Apellido</p>
+                <h3><%= user.last_name ? user.last_name : "apellido" %> </h3>
+            </div>  
+            <div class="mail">
+                <p>Email</p>
+                <h3><%= user.mail ? user.mail : "mail" %></h3>
+            </div>  
+            <div class="nac">
+                <p>Fecha de nacimiento</p>
+                <h3><%= user.nacimiento  && user.nacimiento %></h3>
+            </div>  
+            
+            <div class="address">
+                <p>Domicilio</p>
+                <h3><%= user.domicilio ? user.domicilio : "domicilio" %></h3>
+            </div> 
+            <div class="dni">
+                <p>DNI</p>
+                <h3><%= user.dni ? user.dni : 123 %></h3>
+            </div>  
+            
+            
+
+
+        </section>
+
+        <div id="acciones">
+            <form action="/user/<%= user.id %>/profile/edit"  method="GET">
+                <button class="boton_editar" type="submit" value="editar_item" style=cursor:pointer>Editar perfil</button>
+            </form>
+            
+            <% if (locals.estaLogueado && usuarioLogueado.admin == 1) { %>
+            <form action="/user/list"  method="GET">
+                <button class="boton_listado" type="submit" value="editar_item" style=cursor:pointer>Listado de usuarios</button>
+            </form>
+            <% } %>
+            <a href="/">
+                <button class="boton_listado">HOME</button>
+            </a>
+        </div>
+
+
+
+    </main>
+
+    <!-- <%- include ("./partials/footer") %> -->
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WineOn - Carrito</title>
+        <link rel="stylesheet" href="css/style_productCart.css">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+<body>
+
+    <%- include ("./partials/header") %>
+
+    <main>
+        <section>
+            <article>
+                <div class="Titulo">
+                    <h1>CARRITO DE COMPRAS</h1>
+                </div>
+            </article>
+            <section class="agrupar">
+                <div id="vacio">
+                </div>
+                <article id="BloqueCompra-padre">
+                    <div id="BloqueCompra-hijo">
+                        <div id="Resumen"> Resumen </div>
+                        <div id="subtotal">
+                            <h4>SUBTOTAL</h4>
+                            <h4 id="precio-subtotal"></h4>
+                        </div>
+                        <div id="envio">
+                            <h4>ENVIO</h4>
+                            <h4>$$$$</h4>
+                        </div>
+                        <div id="total">
+                            <h4>TOTAL</h4>
+                            <h4 id="total"></h4>
+                        </div>
+                        <div class="finalizar">
+                            <a href="/productos" class="boton">Seguir Comprando</a>
+                            <button class="boton" id="borrarTodo" type="button" onclick="">Vaciar Carrito</button>
+                            <a href="finalizado" class="boton">Finalizar Compra</a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+            <a class="fab fa-whatsapp" href="https://wa.me/3794888888/?text=tu%20texto%20personalizado" target="_blank"></a>
+    </main>
+
+    <%- include ("./partials/footer") %>
+    <script src="/js/carrito.js"></script>
+    <script src="/js/menuBtn.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>WineOn - <%= vino.nombre %></title>
+        <link rel="stylesheet" href="/css/style_productDetail.css">
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+</head>
+    
+<body>
+
+    <%- include ("./partials/header") %>
+
+    <main>
+        <section class="bloqueProducto-padre">
+            <article >
+                <div class="vip_item">
+                    <h3 id="vinoNombre"><%= vino.nombre %></h3>
+                    <figure>
+                        <img src="/images/products/<%= vino.imagen %>" alt="" width="350" height="350" class="imagenProducto" id="imagen">
+                    </figure>
+                </div>
+            </article>
+
+            <article>
+                <div class="detalle_item">
+                    <h3>Detalle del producto</h3>
+                    <p><%= vino.descripcion %></p><br>
+                </div>
+                <div class="price">
+                    <div class="precio">
+                        <p>$</p>
+                        <p id="vinoPrecio"><%= vino.precio%></p>
+                    </div>
+                    <div class="descuento">
+                        <p>Descuento:%</p>
+                        <p id="vinoDescuento"><%=vino.descuento%></p>
+                    </div>
+                    
+                </div>
+                <div class="quantity">
+                    <label for="cantidad">Cantidad: </label>
+                    <form  lass="checkout" action="/detalle" method="POST">
+                        <select name="OS" id="vinoCantidad">
+                            <option value="1">1</option> 
+                            <option value="2">2</option> 
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </form>
+                    <% if (locals.estaLogueado) { %>
+                        <form action="/productos" method="GET">
+                            <button class="boton" id="botonAgregar" type="submit" value="agregar_carrito" style=cursor:pointer>Agregar al carrito</button>
+                        </form>
+
+                    <% } else {%>
+
+                        <form action="/user/login" method="GET">
+                            <button class="boton" id="botonAgregar" type="submit" value="agregar_carrito" style=cursor:pointer>Agregar al carrito</button>
+                        </form>
+
+                        <% } %>  
+                </div>
+                
+
+            </article>
+
+        </section>
+
+        <% if (locals.estaLogueado && locals.usuarioLogueado.admin == 1) { %>
+        <div id="acciones">
+            <form action="/productos/detail/<%= vino.id %>/editar"  method="GET">
+                <button class="boton_editar" type="submit" value="editar_item" style=cursor:pointer>Editar Producto</button>
+            </form>
+        </div>
+        <% } %>
+        <a class="fab fa-whatsapp" href="https://wa.me/3794888888/?text=tu%20texto%20personalizado" target="_blank"></a>
+    </main>
+
+    <%- include ("./partials/footer") %>
+    <script src="/js/addproduct.js"></script>
+    <script src="/js/menuBtn.js"></script>
+    
+    
+</body>
+</html>

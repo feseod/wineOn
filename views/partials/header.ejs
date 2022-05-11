@@ -1,0 +1,59 @@
+<header>
+    <section class="container">
+        <div class="header-div-one">
+            <div>
+                <a href="/" class="logo">WineOn</a>
+            </div>
+            <button class="product-cart">
+                <a href="/carrito">
+                    <i class="fas fa-shopping-cart"></i>
+                </a> 
+            </button>
+            <button class="burger">
+                <i class="fas fa-bars"></i> 
+            </button>
+            <% if (locals.estaLogueado) { %>
+            <div>
+                <a href="/user/profile">
+                    <button class="login-button">Hola <%= locals.usuarioLogueado.first_name %></button>
+                </a>
+                <a href="/user/logout">salir</a>
+            </div>    
+              
+            <% } else {%>
+           <div>
+                <a href="/user/login">
+                    <button class="login-button">INGRESAR</button>
+                </a>
+            </div>
+        <% } %>
+
+          
+        
+        </div>
+        <div class="header-div-two">
+            <form action="/buscar">
+                <div class="inputForm">
+                    <input class="header-input" type="search" name="buscador" id="" placeholder="¿Qué estás buscando?">
+                    <button class="posicion-i lens">
+                    <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+            </form>
+        </div>
+        <nav class="menu"> 
+            <a href="/">INICIO</a>
+            <a href="/productos">PRODUCTOS</a>
+            <a href="/productos/tintos">VINO TINTO</a>
+            <a href="/productos/blancos">VINO BLANCO</a>
+            <a href="/contacto">CONTACTO</a>
+            <a href="/nosotros">NOSOTROS</a>
+            <% if (locals.estaLogueado) { %>
+                <a href="/user/login">HOLA <%= locals.usuarioLogueado.first_name %></a>
+            <% } else {%>
+                <a href="/user/login">INGRESAR</a>
+            <% } %>
+        </nav>
+    </section>
+</header>
